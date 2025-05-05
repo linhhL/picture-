@@ -2,15 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gallery</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
+  <title>Product Gallery</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
   <style>
-    body { font-family: sans-serif; padding: 40px; background: #f9f9f9; text-align: center; }
-    #lightgallery img { width: 150px; height: auto; margin: 10px; border-radius: 8px; cursor: pointer; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #fff;
+      text-align: center;
+    }
+
+    #lightgallery a img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: zoom-in;
+      transition: 0.2s;
+    }
+
+    #lightgallery a img:hover {
+      transform: scale(1.03);
+    }
   </style>
 </head>
 <body>
-  <h2>Claré Shower Head Gallery</h2>
+  <h2>Beige Shower Head Collection</h2>
   <div id="lightgallery">
     <a href="https://i.ibb.co/cSFhrPGR/instasave-website-439098448-445940434762876-574085301400948697-n.jpg">
       <img src="https://i.ibb.co/cSFhrPGR/instasave-website-439098448-445940434762876-574085301400948697-n.jpg" />
@@ -24,13 +40,14 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
   <script>
-    lightGallery(document.getElementById('lightgallery'), {
+    lightGallery(document.getElementById("lightgallery"), {
       plugins: [lgZoom, lgThumbnail],
-      speed: 500,
-      thumbnail: true
+      speed: 400,
+      thumbnail: true,
+      zoom: true
     });
   </script>
 </body>
