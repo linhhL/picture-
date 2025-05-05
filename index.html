@@ -2,53 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Product Gallery</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
+  <title>Clare-style Gallery</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
       padding: 40px;
-      background: #fff;
+      background: #ffffff;
       text-align: center;
     }
 
-    #lightgallery a img {
-      width: 200px;
-      margin: 10px;
-      border-radius: 10px;
-      cursor: zoom-in;
-      transition: 0.2s;
+    .main-img {
+      max-width: 500px;
+      margin: 0 auto 20px;
     }
 
-    #lightgallery a img:hover {
-      transform: scale(1.03);
+    .main-img img {
+      width: 100%;
+      cursor: zoom-in;
+    }
+
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px;
+    }
+
+    .thumbnails img {
+      width: 100px;
+      height: auto;
+      cursor: pointer;
+      transition: 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .thumbnails img:hover {
+      border: 2px solid #ccc;
     }
   </style>
 </head>
 <body>
-  <h2>Beige Shower Head Collection</h2>
-  <div id="lightgallery">
+  <h2>Beige Collection</h2>
+  <div id="lightgallery" class="main-img">
     <a href="https://i.ibb.co/cSFhrPGR/instasave-website-439098448-445940434762876-574085301400948697-n.jpg">
-      <img src="https://i.ibb.co/cSFhrPGR/instasave-website-439098448-445940434762876-574085301400948697-n.jpg" />
+      <img id="mainPreview" src="https://i.ibb.co/cSFhrPGR/instasave-website-439098448-445940434762876-574085301400948697-n.jpg" alt="Main Image">
     </a>
-    <a href="https://i.ibb.co/6JD27Bqb/instasave-website-439143733-1163373748013232-5960146039747839971-n.jpg">
-      <img src="https://i.ibb.co/6JD27Bqb/instasave-website-439143733-1163373748013232-5960146039747839971-n.jpg" />
-    </a>
-    <a href="https://i.ibb.co/21vJNBV4/instasave-website-439162251-979863253849493-6716520209420115097-n.jpg">
-      <img src="https://i.ibb.co/21vJNBV4/instasave-website-439162251-979863253849493-6716520209420115097-n.jpg" />
-    </a>
+  </div>
+
+  <div class="thumbnails">
+    <img src="https://i.ibb.co/cSFhrPGR/instasave-website-439098448-445940434762876-574085301400948697-n.jpg" onclick="updateMain(this)">
+    <img src="https://i.ibb.co/6JD27Bqb/instasave-website-439143733-1163373748013232-5960146039747839971-n.jpg" onclick="updateMain(this)">
+    <img src="https://i.ibb.co/21vJNBV4/instasave-website-439162251-979863253849493-6716520209420115097-n.jpg" onclick="updateMain(this)">
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
   <script>
     lightGallery(document.getElementById("lightgallery"), {
-      plugins: [lgZoom, lgThumbnail],
+      plugins: [lgZoom],
       speed: 400,
-      thumbnail: true,
       zoom: true
     });
+
+    function updateMain(thumbnail) {
+      const mainImg = document.getElementById("mainPreview");
+      const parentLink = mainImg.parentElement;
+      mainImg.src = thumbnail.src;
+      parentLink.href = thumbnail.src;
+    }
   </script>
 </body>
 </html>
